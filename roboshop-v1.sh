@@ -53,6 +53,8 @@ do
             ]
     }'
 
+    echo "r53 record updated for Instance ID: $INSTANCE_ID"
+
 done
 
 
