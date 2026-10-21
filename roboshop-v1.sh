@@ -34,7 +34,8 @@ do
             --output text
         )
         r53_record="${domain_name}"
-
+    fi
+    
     #update r53 record
     aws route53 change-resource-record-sets \
             --hosted-zone-id ${hosted_zone_id} \
@@ -53,7 +54,7 @@ do
     }'
 
 done
-fi
+
 
 
 
