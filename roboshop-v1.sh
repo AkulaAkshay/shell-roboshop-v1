@@ -19,7 +19,7 @@ do
 
     echo "Launched ${instance} Instance ID: $INSTANCE_ID"
 
-    if [ instance != frontend ]; then
+    if [ ${instance} != frontend ]; then
         IP=$(aws ec2 describe-instances \
             --instance-ids ${INSTANCE_ID} \
             --query 'Reservations[*].Instances[*].PublicIpAddress' \
@@ -35,7 +35,7 @@ do
         )
         r53_record="${domain_name}"
     fi
-    
+
     #update r53 record
     aws route53 change-resource-record-sets \
             --hosted-zone-id ${hosted_zone_id} \
@@ -44,7 +44,7 @@ do
                 {
                     "Action": "UPSERT",
                     "ResourceRecordSet": {
-                    "Name": ":'${r53_record}'",
+                    "Name": '${r53_record}'",
                     "Type": "A",
                     "TTL": 1,
                     "ResourceRecords": [{"Value": "'${IP}'"}]
