@@ -17,7 +17,7 @@ do
             --output text
     )
 
-    echo "Launched ${instance} Instance ID: $INSTANCE_ID"
+    echo "Launched ${instance} Instance ID: ${INSTANCE_ID}"
 
     if [ ${instance} != "frontend" ]; then
         IP=$(aws ec2 describe-instances \
@@ -53,7 +53,7 @@ do
             ]
     }'
 
-    echo "r53 record updated for Instance ID: $INSTANCE_ID"
+    echo "r53 record updated for Instance ID: ${INSTANCE_ID}"
 
 done
 
